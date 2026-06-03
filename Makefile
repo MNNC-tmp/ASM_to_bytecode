@@ -16,6 +16,7 @@ LIB	=	./lib/libmy.a
 SRCF		=	src/
 SRC			=	$(SRCF)flags.c	\
 				$(SRCF)headers.c	\
+				$(SRCF)parser.c		\
 
 OBJ			=	$(SRC:.c=.o)
 

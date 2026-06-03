@@ -8,7 +8,11 @@
 
 int main(int ac, char **av)
 {
+    output_params_t params = {0};
+    int errno = SUCCESS;
+
     (void)ac;
-    (void)av;
-    return SUCCESS;
+    if (parser(&params, &av[1], &errno))
+        return errno;
+    return errno;
 }
