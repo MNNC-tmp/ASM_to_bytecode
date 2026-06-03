@@ -1,0 +1,6 @@
+debug_files
+*.a
+*.o
+*.asm
+ref.md
+compile
