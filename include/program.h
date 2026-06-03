@@ -39,4 +39,5 @@ extern const handle_flags_t flags[];
 
 // Main functions
 int parser(output_params_t *params, char **args, int *err);
+int compile(output_params_t *params);
 #endif /* !PROGRAM_H_ */

@@ -4,3 +4,4 @@ debug_files
 *.asm
 ref.md
 compile
+*.out

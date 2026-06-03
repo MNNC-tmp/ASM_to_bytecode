@@ -14,5 +14,5 @@ int main(int ac, char **av)
     (void)ac;
     if (parser(&params, &av[1], &errno))
         return errno;
-    return errno;
+    return compile(&params);
 }
