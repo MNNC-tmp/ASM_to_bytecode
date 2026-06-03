@@ -22,16 +22,29 @@ void free_split(char **tokens)
     free(tokens);
 }
 
+static int skip_char(int in_bracket, char c)
+{
+    return in_bracket && c == ' ';
+}
+
 void clean_line(char *line)
 {
-    for (int i = 0; line[i]; i++) {
-        if (line[i] == ';' || line[i] == '\n' || line[i] == '\r') {
-            line[i] = '\0';
-            return;
+    int in_bracket = 0;
+    int r = 0;
+    int w = 0;
+
+    while (line[r]) {
+        if (line[r] == ';' || line[r] == '\n' || line[r] == '\r')
+            break;
+        in_bracket = (line[r] == '[') ? 1 : (line[r] == ']') ? 0 : in_bracket;
+        if (!skip_char(in_bracket, line[r])) {
+            line[w] = (line[r] == '\t' ||
+                (line[r] == ',' && !in_bracket)) ? ' ' : line[r];
+            w++;
         }
-        if (line[i] == ',')
-            line[i] = ' ';
+        r++;
     }
+    line[w] = '\0';
 }
 
 static void free_tokens(char **tokens, int count)
